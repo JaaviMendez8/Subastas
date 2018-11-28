@@ -13,23 +13,25 @@ import java.util.ArrayList;
  */
 public class Subasta
 {
-    String codigosubasta;
+    int codigosubasta;
     Articulo articulo;
-    //existirá un valor por artículo y por el total
+    ArrayList<Puja> pujas;
+    //existirá un  valor por artículo y por el total
     //total = suma de todos los valores de c/u de los artículos
     
-    public Subasta(String codigo, Articulo articulo)
+    public Subasta(int codigo, Articulo articulo)
     {
         this.codigosubasta = codigo;
         this.articulo = articulo;
+        this.pujas = new ArrayList<Puja>();
     }
 
-    public String getCodigosubasta() 
+    public int getCodigosubasta() 
     {
         return codigosubasta;
     }
 
-    public void setCodigosubasta(String codigosubasta) 
+    public void setCodigosubasta(int codigosubasta) 
     {
         this.codigosubasta = codigosubasta;
     }

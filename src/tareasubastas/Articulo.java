@@ -15,9 +15,9 @@ public class Articulo
 {
     String descripcion;
     int valor;
-    Date fechainicio;
+    String fechainicio;
     
-    public Articulo(String descripcion, int valor, Date fecha)
+    public Articulo(String descripcion, int valor, String fecha)
     {
         this.descripcion = descripcion;
         this.valor = valor;
@@ -44,12 +44,12 @@ public class Articulo
         this.valor = valor;
     }
 
-    public Date getFechainicio() 
+    public String getFechainicio() 
     {
         return fechainicio;
     }
 
-    public void setFechainicio(Date fechainicio) 
+    public void setFechainicio(String fechainicio) 
     {
         this.fechainicio = fechainicio;
     }   

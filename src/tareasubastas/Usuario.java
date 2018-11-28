@@ -59,6 +59,8 @@ public class Usuario
         this.tipo = tipo;
     }
     
-    
-    
+    public void addSubasta(Subasta s)
+    {
+        subastas.add(s);
+    }
 }

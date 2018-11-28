@@ -5,6 +5,9 @@
  */
 package tareasubastas;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -79,12 +82,49 @@ public class TareaSubastas
                 //si retorna 0 es vendedor, 1 comprador, 2 no existe
                 if(tipo==0)
                 {
+                    int op=1;
                     //mostrar menu de vendedor con while hasta que quiera salir!
                     //vendedor puede modificar artículos
+                    while(op!=0)
+                    {
+                        System.out.println("1) Crear Subasta ");
+                        System.out.println("2) Editar Subasta");
+                        //para editar la subasta pedirà codigo
+                        System.out.println("0) Salir");
+
+                        System.out.println("Ingrese opción: ");
+                        s = new Scanner(System.in);
+                        op = s.nextInt();  
+                        
+                        if(op==1)
+                        {
+                            Random r = new Random();
+                            int codigo = r.nextInt(99999999);
+                            
+                            System.out.println("Ingrese descripción del producto: ");
+                            s = new Scanner(System.in);
+                            String descripcion = s.nextLine();  
+                            
+                            System.out.println("Valor del artículo: ");
+                            s = new Scanner(System.in);
+                            int valor = s.nextInt();  
+                            
+                            String fecha = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+                            
+                            Articulo a = new Articulo(descripcion, valor, fecha);
+                            
+                            Subasta subasta = new Subasta(codigo, a);
+                        }
+                        else if(op==2)
+                        {
+                            
+                        }
+                    } 
                 }
                 else if(tipo==1)
                 {
                     //mostrar menu de comprador con while hasta que quiera salir!
+                    //comprador puede pujar!!
                 }
                 else if(tipo!=0 && tipo!=1)
                 {
@@ -94,7 +134,7 @@ public class TareaSubastas
             
             if(opcion==3)
             {
-                System.out.println("1) Mostrar Subastas: ");
+                System.out.println("1) Mostrar Subastas ");
                 System.out.println("2) Volver al inicio");
                 System.out.println("0) Salir");
                 

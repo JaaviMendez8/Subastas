@@ -49,6 +49,19 @@ public class Sistema
         return tipo;
     }
     
+    public void agregarSubasta(String nombre, String contrasena, Subasta s)
+    {
+        int tipo = 2;
+        for (Iterator<Usuario> it = usuarios.iterator(); it.hasNext();)
+        {
+            Usuario u = it.next();
+            if(u.getNombreusuario().equals(nombre) && u.getContrasena().equals(contrasena))
+            {
+                u.addSubasta(s);
+            }
+        }
+    }
+    
     public void imprimirSubastas()
     {
         for (Iterator<Subasta> it = subastas.iterator(); it.hasNext();)
