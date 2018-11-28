@@ -6,6 +6,7 @@
 package tareasubastas;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -27,4 +28,37 @@ public class Sistema
         this.usuarios.add(u);
     }
     
+    public int buscarUsuario(String nombre, String contrasena)
+    {
+        int tipo = 2;
+        for (Iterator<Usuario> it = usuarios.iterator(); it.hasNext();)
+        {
+            Usuario u = it.next();
+            if(u.getNombreusuario().equals(nombre) && u.getContrasena().equals(contrasena))
+            {
+                if(u.getTipo()==0)
+                {
+                    tipo=0;
+                }
+                else if(u.getTipo()==1)
+                {
+                    tipo=1;
+                }
+            }
+        }
+        return tipo;
+    }
+    
+    public void imprimirSubastas()
+    {
+        for (Iterator<Subasta> it = subastas.iterator(); it.hasNext();)
+        {
+            Subasta s = it.next();
+            System.out.println("Código: "+s.getCodigosubasta());
+            System.out.println("-Articulo-");
+            System.out.println("Descripción: "+s.getArticulo().descripcion);
+            System.out.println("Valor: "+s.getArticulo().valor);
+            System.out.println("Fecha Inicio: "+s.getArticulo().fechainicio);
+        }
+    }
 }

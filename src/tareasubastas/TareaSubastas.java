@@ -26,16 +26,15 @@ public class TareaSubastas
         System.out.println("------");
         System.out.println("-MENÚ-");
         System.out.println("1) Registrarse en el sistema");
-        System.out.println("2) Acceder al sistema como vendedor");
-        System.out.println("3) Acceder al sistema como comprador");
-        System.out.println("4) Observar Subastas");
+        System.out.println("2) Acceder al sistema");
+        System.out.println("3) Observar Subastas");
         System.out.println("0) Salir");
         System.out.println("------");
         System.out.println("Ingresar opción: ");
         s = new Scanner(System.in);
         opcion = s.nextInt();
         
-        while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=0)
+        while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=0)
         {
             System.out.println("Opción no válida. Vuelva a ingresar una opción: ");
             s = new Scanner(System.in);
@@ -56,23 +55,57 @@ public class TareaSubastas
                 s = new Scanner(System.in);
                 String contrasena = s.nextLine();
                 
-                Usuario u = new Usuario(nombre, contrasena);
+                System.out.println("Escoja un tipo de usuario: ");
+                System.out.println("1) Vendedor");
+                System.out.println("2) Comprador");
+                s = new Scanner(System.in);
+                int tipo = s.nextInt();
+                
+                Usuario u = new Usuario(nombre, contrasena, tipo);
                 sistema.crearUsuario(u);
             }
             
             if(opcion==2)
             {
+                System.out.println("Ingrese su nombre de usuario: ");
+                s = new Scanner(System.in);
+                String nombre = s.nextLine();
                 
+                System.out.println("Ingrese su contraseña: ");
+                s = new Scanner(System.in);
+                String contrasena = s.nextLine();
+                
+                int tipo = sistema.buscarUsuario(nombre, contrasena);
+                //si retorna 0 es vendedor, 1 comprador, 2 no existe
+                if(tipo==0)
+                {
+                    //mostrar menu de vendedor con while hasta que quiera salir!
+                    //vendedor puede modificar artículos
+                }
+                else if(tipo==1)
+                {
+                    //mostrar menu de comprador con while hasta que quiera salir!
+                }
+                else if(tipo!=0 && tipo!=1)
+                {
+                    System.out.println("Usuario o contrasena incorrectos.");
+                }
             }
             
             if(opcion==3)
             {
+                System.out.println("1) Mostrar Subastas: ");
+                System.out.println("2) Volver al inicio");
+                System.out.println("0) Salir");
                 
-            }
-            
-            if(opcion==4)
-            {
+                System.out.println("Ingrese Opción: ");
+                s = new Scanner(System.in);
+                int op = s.nextInt();
                 
+                if(op==1)
+                {
+                    sistema.imprimirSubastas();
+                }
             }
         }
 
