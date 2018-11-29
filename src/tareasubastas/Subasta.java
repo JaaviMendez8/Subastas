@@ -45,6 +45,19 @@ public class Subasta
     {
         this.articulo = articulo;
     }
+    
+    public void addPuja(Puja p)
+    {
+        pujas.add(p);
+    }
 
+    public ArrayList<Puja> getPujas()
+    {
+        return pujas;
+    }
 
+    public void setPujas(ArrayList<Puja> pujas)
+    {
+        this.pujas = pujas;
+    }
 }

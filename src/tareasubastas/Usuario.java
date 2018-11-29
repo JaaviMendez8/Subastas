@@ -66,6 +66,21 @@ public class Usuario
     {
         subastas.add(s);
     }
+    
+    public void addPuja(Puja p)
+    {
+        pujas.add(p);
+    }
+
+    public ArrayList<Puja> getPujas()
+    {
+        return pujas;
+    }
+
+    public void setPujas(ArrayList<Puja> pujas) 
+    {
+        this.pujas = pujas;
+    }
 
     public ArrayList<Subasta> getSubastas() 
     {

@@ -120,10 +120,12 @@ public class TareaSubastas
                             Subasta subasta = new Subasta(codigo, a);
                             sistema.agregarSubasta(nombre, contrasena, subasta);
                         }
+                        /*
                         else if(op==2)
                         {
                             
                         }
+                        */
                         
                         else if(op==3)
                         {
@@ -135,6 +137,53 @@ public class TareaSubastas
                 {
                     //mostrar menu de comprador con while hasta que quiera salir!
                     //comprador puede pujar!!
+                    int op=1;
+                    while(op!=0)
+                    {
+                        System.out.println("1) Listar Subastas ");
+                        System.out.println("2) Pujar Subasta");
+                        System.out.println("3) Listar Pujas Realizadas");
+                        System.out.println("0) Salir");
+
+                        System.out.println("Ingrese opción: ");
+                        s = new Scanner(System.in);
+                        op = s.nextInt();  
+                        
+                        if(op==1)
+                        {
+                            sistema.imprimirSubastas();
+                        }
+                        
+                        else if(op==2)
+                        {
+                            System.out.println("Ingrese el código de la subasta: ");
+                            s = new Scanner(System.in);
+                            int codigosubasta = s.nextInt();  
+                            
+                            System.out.println("Ingrese el valor de la puja: ");
+                            s = new Scanner(System.in);
+                            int valorpuja = s.nextInt();  
+
+                            Puja p = new Puja(nombre, valorpuja, codigosubasta);
+                            
+                            boolean fueAgregada = sistema.agregarPujaSubasta(codigosubasta, p);
+                            if(fueAgregada==true)
+                            {
+                                sistema.agregarPujaUsuario(nombre, contrasena, p);
+                                System.out.println("Puja añadida con éxito.");
+                            }
+                            else
+                            {
+                                System.out.println("Subasta no encontrada.");
+                            }
+                            
+                        }
+
+                        else if(op==3)
+                        {
+                            sistema.listarPujasUsuario(nombre);
+                        }
+                    } 
                 }
                 else if(tipo!=0 && tipo!=1)
                 {
@@ -158,7 +207,5 @@ public class TareaSubastas
                 }
             }
         }
-
-    }
-    
+    }   
 }
