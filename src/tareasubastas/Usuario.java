@@ -17,6 +17,7 @@ public class Usuario
     String contrasena;
     int tipo;
     ArrayList<Subasta> subastas;
+    ArrayList<Puja> pujas;
     
     //tipo 0 -> observador
     //tipo 1 -> comprador
@@ -27,6 +28,8 @@ public class Usuario
         this.nombreusuario = nombreusuario;
         this.contrasena = contrasena;
         this.tipo = tipo;
+        this.subastas = new ArrayList<Subasta>();
+        this.pujas = new ArrayList<Puja>();
     }
 
     public String getNombreusuario() 
@@ -63,4 +66,16 @@ public class Usuario
     {
         subastas.add(s);
     }
+
+    public ArrayList<Subasta> getSubastas() 
+    {
+        return subastas;
+    }
+
+    public void setSubastas(ArrayList<Subasta> subastas)
+    {
+        this.subastas = subastas;
+    }
+    
+    
 }

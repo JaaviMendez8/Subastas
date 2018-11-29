@@ -24,30 +24,32 @@ public class TareaSubastas
         //Comprador, opción de pujar a través del código de la subasta
         //AGREGAR MÉTODO PARA AÑADIR DINERO A LA CARTERA 
         //Vendedor, método para agregar subasta. (primero ingresar la cantidad de artículos para que hacer el while i<cantarticulos -> solicitar información artículo)
-        int opcion;
-        Scanner s = new Scanner(System.in);
-        System.out.println("------");
-        System.out.println("-MENÚ-");
-        System.out.println("1) Registrarse en el sistema");
-        System.out.println("2) Acceder al sistema");
-        System.out.println("3) Observar Subastas");
-        System.out.println("0) Salir");
-        System.out.println("------");
-        System.out.println("Ingresar opción: ");
-        s = new Scanner(System.in);
-        opcion = s.nextInt();
+        int opcion=1;
         
-        while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=0)
-        {
-            System.out.println("Opción no válida. Vuelva a ingresar una opción: ");
-            s = new Scanner(System.in);
-            opcion = s.nextInt();
-        }
         
         Sistema sistema = new Sistema();
 
         while (opcion!=0)
         {
+            Scanner s = new Scanner(System.in);
+            System.out.println("------");
+            System.out.println("-MENÚ-");
+            System.out.println("1) Registrarse en el sistema");
+            System.out.println("2) Acceder al sistema");
+            System.out.println("3) Observar Subastas");
+            System.out.println("0) Salir");
+            System.out.println("------");
+            System.out.println("Ingresar opción: ");
+            s = new Scanner(System.in);
+            opcion = s.nextInt();
+
+            while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=0)
+            {
+                System.out.println("Opción no válida. Vuelva a ingresar una opción: ");
+                s = new Scanner(System.in);
+                opcion = s.nextInt();
+            }
+            
             if(opcion==1)
             {
                 System.out.println("Ingrese su nombre de usuario: ");
@@ -59,8 +61,8 @@ public class TareaSubastas
                 String contrasena = s.nextLine();
                 
                 System.out.println("Escoja un tipo de usuario: ");
-                System.out.println("1) Vendedor");
-                System.out.println("2) Comprador");
+                System.out.println("0) Vendedor");
+                System.out.println("1) Comprador");
                 s = new Scanner(System.in);
                 int tipo = s.nextInt();
                 
@@ -79,6 +81,7 @@ public class TareaSubastas
                 String contrasena = s.nextLine();
                 
                 int tipo = sistema.buscarUsuario(nombre, contrasena);
+                System.out.println("tipo: "+tipo);
                 //si retorna 0 es vendedor, 1 comprador, 2 no existe
                 if(tipo==0)
                 {
@@ -89,6 +92,7 @@ public class TareaSubastas
                     {
                         System.out.println("1) Crear Subasta ");
                         System.out.println("2) Editar Subasta");
+                        System.out.println("3) Mostrar Subastas");
                         //para editar la subasta pedirà codigo
                         System.out.println("0) Salir");
 
@@ -114,10 +118,16 @@ public class TareaSubastas
                             Articulo a = new Articulo(descripcion, valor, fecha);
                             
                             Subasta subasta = new Subasta(codigo, a);
+                            sistema.agregarSubasta(nombre, contrasena, subasta);
                         }
                         else if(op==2)
                         {
                             
+                        }
+                        
+                        else if(op==3)
+                        {
+                            sistema.listarSubastasUsuario(nombre);
                         }
                     } 
                 }
